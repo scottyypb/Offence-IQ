@@ -6,10 +6,10 @@ Offence IQ is an independent, mobile-friendly study tool for South Australian le
 
 ## Build 1.0 features
 - Responsive mobile-first home screen and navigation
-- Legislation library with Criminal Law Consolidation Act 1935 (SA), s 20 (Assault)
+- Legislation library with Criminal Law Consolidation Act 1935 (SA), s 20 (Assault), and Summary Offences Act 1953 (SA), s 7 (Disorderly or offensive conduct or language)
 - Statutory wording, section references, source links and verification note
-- Search within the current module
-- Five flashcards with mastery tracking
+- Search within each module, highlight matches and jump to matching subsections
+- Five flashcards per module with separate mastery tracking
 - Randomised objective knowledge tests with explanations
 - Local progress and accuracy tracking
 - PWA manifest and service worker for installability/offline app shell support
@@ -28,8 +28,11 @@ Offence IQ is an independent, mobile-friendly study tool for South Australian le
 - Flag amendments, commencement questions, discrepancies and matters requiring qualified legal or agency review.
 - Do not treat this app as SAPOL policy, operational direction or legal advice.
 
-### Current module note
-The s 20 module was checked against the current authorised Criminal Law Consolidation Act 1935 (SA) version listed as 1 July 2026, on 15 November 2026. Recheck the official source for later amendments or commencement changes before relying on it.
+### Current module notes
+- The s 20 module was checked against the current authorised Criminal Law Consolidation Act 1935 (SA) version listed as 1 July 2026, on 15 November 2026.
+- The s 7 extract was checked against the official authorised Summary Offences Act 1953 (SA), current version listed as 1 July 2026, on 15 November 2026.
+
+Recheck the official source for later amendments or commencement changes before relying on either module.
 
 ## Privacy
 Quiz statistics and flashcard mastery are stored in browser local storage on this device. There is no account system, cloud sync or analytics in this build.
