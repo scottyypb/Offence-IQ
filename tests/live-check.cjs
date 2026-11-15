@@ -14,10 +14,11 @@ const base = 'https://scottyypb.github.io/Offence-IQ/';
       }
       const [html, sw] = await Promise.all([pageResponse.text(), swResponse.text()]);
       const checks = [
-        ['three-module home copy', html.includes('all three modules')],
-        ['15-card progress display', html.includes('id="mastery">0/15')],
+        ['three-module home copy', html.includes('all four modules')],
+        ['15-card progress display', html.includes('id="mastery">0/20')],
         ['third module navigation', html.includes("selectModule(\\'traffic\\')")],
-        ['v13 service worker cache', sw.includes('offence-iq-v13')]
+        ['fourth module navigation', html.includes("selectModule(\\'dui\\')")],
+        ['v13 service worker cache', sw.includes('offence-iq-v14')]
       ];
       const failed = checks.filter(([, passed]) => !passed).map(([name]) => name);
       if (!failed.length) {
