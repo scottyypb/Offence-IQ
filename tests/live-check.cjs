@@ -14,15 +14,16 @@ const base = 'https://scottyypb.github.io/Offence-IQ/';
       }
       const [html, sw] = await Promise.all([pageResponse.text(), swResponse.text()]);
       const checks = [
-        ['eight-module home copy', html.includes('all eight modules')],
-        ['40-card progress display', html.includes('id="mastery">0/40')],
+        ['nine-module home copy', html.includes('all nine modules')],
+        ['dynamic module progress display', html.includes('const totalCards=moduleRegistry.reduce')],
         ['third module navigation', html.includes("selectModule(\\'traffic\\')")],
         ['fourth module navigation', html.includes("selectModule(\\'dui\\')")],
         ['fifth module navigation', html.includes("selectModule(\\'pca\\')")],
         ['sixth module navigation', html.includes("selectModule(\\'drug\\')")],
         ['seventh module navigation', html.includes("selectModule(\\'refusal\\')")],
         ['eighth module navigation', html.includes("selectModule(\\'dangerous\\')")],
-        ['v17 service worker cache', sw.includes('offence-iq-v17')]
+        ['ninth module navigation', html.includes("selectModule(\\'accident\\')")],
+        ['v18 service worker cache', sw.includes('offence-iq-v18')]
       ];
       const failed = checks.filter(([, passed]) => !passed).map(([name]) => name);
       if (!failed.length) {
