@@ -23,7 +23,9 @@ const base = 'https://scottyypb.github.io/Offence-IQ/';
         ['seventh module navigation', html.includes("selectModule(\\'refusal\\')")],
         ['eighth module navigation', html.includes("selectModule(\\'dangerous\\')")],
         ['ninth module navigation', html.includes("selectModule(\\'accident\\')")],
-        ['v18 service worker cache', sw.includes('offence-iq-v18')]
+        ['three assessment levels', html.includes('Level 1 · Recognise the offence') && html.includes('Level 2 · Recall key elements') && html.includes('Level 3 · Apply the legislation')],
+        ['free-recall answer review', html.includes('function markRecall(') && html.includes('Reveal key points')],
+        ['v19 service worker cache', sw.includes('offence-iq-v19')]
       ];
       const failed = checks.filter(([, passed]) => !passed).map(([name]) => name);
       if (!failed.length) {
