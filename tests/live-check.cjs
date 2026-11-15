@@ -18,7 +18,7 @@ const base = 'https://scottyypb.github.io/Offence-IQ/';
         ['20-card progress display', html.includes('id="mastery">0/20')],
         ['third module navigation', html.includes("selectModule(\\'traffic\\')")],
         ['fourth module navigation', html.includes("selectModule(\\'dui\\')")],
-        ['v14 service worker cache', sw.includes('offence-iq-v14')]
+        ['v15 service worker cache', sw.includes('offence-iq-v15')]
       ];
       const failed = checks.filter(([, passed]) => !passed).map(([name]) => name);
       if (!failed.length) {
