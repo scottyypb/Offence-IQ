@@ -1,7 +1,8 @@
 {
   "name": "Offence IQ — SA Legislation Trainer",
   "short_name": "Offence IQ",
-  "start_url": "./",
+  "start_url": "/Offence-IQ/",
+  "scope": "/Offence-IQ/",
   "display": "standalone",
   "background_color": "#0b1421",
   "theme_color": "#101b2b",
