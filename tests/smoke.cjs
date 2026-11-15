@@ -39,7 +39,17 @@ const path = require('node:path');
     await page.getByText(/Marked mastered/).waitFor();
 
     await page.getByRole('button', { name: 'Knowledge test' }).click();
-    await page.getByRole('button', { name: /Start 5-question test/ }).click();
+    await page.getByRole('button', { name: /Level 1 · Recognise the offence/ }).click();
+    await page.locator('.answer').first().click();
+    await page.getByRole('button', { name: 'Check answer' }).click();
+    await page.locator('.feedback').waitFor();
+    await page.getByRole('button', { name: 'Change test level' }).click();
+    await page.getByRole('button', { name: /Level 2 · Recall key elements/ }).click();
+    await page.locator('#recallInput').fill('I can recall the key statutory elements and the important words.');
+    await page.getByRole('button', { name: 'Reveal key points' }).click();
+    await page.getByRole('button', { name: 'I recalled the key points' }).click();
+    await page.getByRole('button', { name: 'Change test level' }).click();
+    await page.getByRole('button', { name: /Level 3 · Apply the legislation/ }).click();
     await page.locator('.answer').first().click();
     await page.getByRole('button', { name: 'Check answer' }).click();
     await page.locator('.feedback').waitFor();
@@ -49,7 +59,7 @@ const path = require('node:path');
     await page.getByText('1', { exact: true }).first().waitFor();
 
     if (errors.length) throw new Error('Browser JavaScript errors: ' + errors.join(' | '));
-    console.log('PASS: mobile layout renders; all nine modules open; search returns and jumps to matches; flashcard mastery saves; quiz answers; progress updates; no uncaught JavaScript errors.');
+    console.log('PASS: mobile layout renders; all nine modules open; search returns and jumps to matches; flashcard mastery saves; recognition, free-recall and application tests work; progress updates; no uncaught JavaScript errors.');
   } finally {
     await browser.close();
   }
