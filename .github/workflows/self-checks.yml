@@ -47,3 +47,9 @@ jobs:
           }
           console.log('PASS: inline JavaScript parses, service worker parses, manifest is valid JSON, and core app markers exist.');
           NODE
+      - name: Install browser test tools
+        run: npm install --no-save playwright
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+      - name: Test real browser interactions
+        run: node tests/smoke.cjs
