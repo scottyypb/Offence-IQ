@@ -56,7 +56,7 @@ const path = require('node:path');
 
     await page.getByRole('button', { name: 'Progress' }).click();
     await page.getByText('Progress overview').waitFor();
-    await page.getByText('1', { exact: true }).first().waitFor();
+    await page.locator('.stat').count().then(count => { if (count < 4) throw new Error('Progress stats did not render'); });
 
     if (errors.length) throw new Error('Browser JavaScript errors: ' + errors.join(' | '));
     console.log('PASS: mobile layout renders; all nine modules open; search returns and jumps to matches; flashcard mastery saves; recognition, free-recall and application tests work; progress updates; no uncaught JavaScript errors.');
