@@ -1,162 +1,26 @@
-<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#101827">
-<title>Offence IQ | Police Training</title>
+<!doctype html><html lang="en-AU"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#101b2b"><meta name="description" content="Offence IQ — South Australian police legislation learning"><link rel="manifest" href="manifest.json"><title>Offence IQ | SA Legislation Trainer</title>
 <style>
-:root{--bg:#0b1220;--panel:#121e30;--panel2:#18263b;--gold:#e6b84a;--text:#f4f6fa;--muted:#aab6c7;--line:#2a3a52;--green:#5fc49a;--red:#ed7b7b}
-*{box-sizing:border-box}
-body{margin:0;background:linear-gradient(160deg,#101b2c,#080d17 70%);color:var(--text);font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;min-height:100vh}
-.wrap{max-width:760px;margin:0 auto;padding:22px 16px 50px}
-header{display:flex;align-items:center;gap:12px;margin:4px 0 26px}
-.logo{width:46px;height:46px;border-radius:13px;background:var(--gold);color:#111827;display:grid;place-items:center;font-weight:900;font-size:21px}
-.brand{font-weight:850;letter-spacing:.08em;font-size:18px}
-.tag{font-size:12px;color:var(--muted);letter-spacing:.04em}
-.hero{padding:24px 20px;border:1px solid var(--line);border-radius:20px;background:linear-gradient(135deg,#1a2b43,#111b2c);margin-bottom:18px}
-.eyebrow{color:var(--gold);font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase}
-h1{font-size:clamp(27px,6vw,38px);line-height:1.12;margin:8px 0 10px}
-p{margin:8px 0;color:var(--muted)}
-.stats{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
-.stat{background:#0c1524;border:1px solid var(--line);border-radius:12px;padding:9px 12px;font-size:13px;color:var(--muted)}
-.stat strong{color:var(--text);display:block;font-size:17px}
-.card{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:19px;margin:14px 0}
-.card h2{font-size:20px;margin:0 0 7px}
-.card h3{font-size:17px;margin:0 0 8px}
-button{border:0;border-radius:12px;padding:13px 17px;font:700 15px system-ui;cursor:pointer}
-.primary{background:var(--gold);color:#151b25}
-.secondary{background:var(--panel2);color:var(--text);border:1px solid var(--line)}
-button:disabled{opacity:.5;cursor:not-allowed}
-.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
-.progress{height:8px;background:#26354a;border-radius:99px;overflow:hidden;margin:12px 0 18px}
-.progress span{height:100%;display:block;background:var(--gold);width:0;transition:width .2s}
-.question{font-size:19px;font-weight:750;margin:16px 0}
-.option{display:flex;align-items:flex-start;gap:11px;width:100%;text-align:left;background:#17253a;border:1px solid #31435d;color:var(--text);padding:13px;border-radius:12px;margin:9px 0;font-weight:500}
-.option.selected{border-color:var(--gold);background:#2b2a25}
-.option.correct{border-color:var(--green);background:#17352f}
-.option.wrong{border-color:var(--red);background:#3a2228}
-.letter{width:26px;height:26px;flex:0 0 26px;border-radius:8px;background:#2b3c55;display:grid;place-items:center;font-size:13px;font-weight:800}
-.feedback{padding:14px;border-radius:12px;background:#0c1726;border:1px solid var(--line);margin-top:14px}
-.feedback.good{border-color:#367a63}.feedback.bad{border-color:#884b50}
-.small{font-size:12px;color:var(--muted)}
-.hidden{display:none!important}
-.pill{display:inline-block;border:1px solid var(--line);border-radius:99px;padding:4px 9px;font-size:12px;color:var(--gold);margin-bottom:8px}
-footer{font-size:12px;color:#8492a6;text-align:center;margin:24px 0}
-.result{font-size:34px;font-weight:900;color:var(--gold)}
-hr{border:0;border-top:1px solid var(--line);margin:18px 0}
-@media(min-width:600px){.wrap{padding-top:32px}.hero{padding:30px}}
-</style>
-</head>
-<body>
-<div class="wrap">
-<header><div class="logo">IQ</div><div><div class="brand">OFFENCE IQ</div><div class="tag">KNOW THE LAW. APPLY THE LAW.</div></div></header>
-
-<section id="home">
-  <div class="hero">
-    <div class="eyebrow">Operational learning • Prototype</div>
-    <h1>Think clearly.<br>Apply the law.</h1>
-    <p>Build confidence in offence identification, evidence assessment and legislative decision-making through realistic practice scenarios.</p>
-    <div class="stats">
-      <div class="stat"><strong id="completedStat">0</strong>Questions completed</div>
-      <div class="stat"><strong id="bestStat">—</strong>Best score</div>
-      <div class="stat"><strong>3</strong>Practice questions</div>
-    </div>
-  </div>
-  <div class="card">
-    <span class="pill">START TRAINING</span>
-    <h2>Scenario assessment</h2>
-    <p>Read each scenario carefully, identify the most defensible answer and review the explanation after you respond.</p>
-    <div class="actions"><button class="primary" onclick="startQuiz()">Start assessment</button></div>
-  </div>
-  <div class="card">
-    <h3>What you'll practise</h3>
-    <p>• Identifying relevant offences and elements</p>
-    <p>• Separating facts, assumptions and evidence</p>
-    <p>• Recognising when a legal threshold or further enquiry is required</p>
-  </div>
-</section>
-
-<section id="quiz" class="hidden">
-  <div class="card">
-    <div class="eyebrow">ASSESSMENT</div>
-    <div style="display:flex;justify-content:space-between;gap:10px"><strong id="questionCount">Question 1 of 3</strong><span class="small" id="scoreLive">Score: 0</span></div>
-    <div class="progress"><span id="progressBar"></span></div>
-    <div class="pill" id="topic">Decision-making</div>
-    <h2 id="scenarioTitle">Scenario</h2>
-    <p id="scenarioText"></p>
-    <div class="question" id="questionText"></div>
-    <div id="options"></div>
-    <div id="feedback" class="feedback hidden"></div>
-    <div class="actions">
-      <button class="primary" id="submitBtn" onclick="submitAnswer()" disabled>Submit answer</button>
-      <button class="secondary hidden" id="nextBtn" onclick="nextQuestion()">Next question</button>
-      <button class="secondary" onclick="exitQuiz()">Exit</button>
-    </div>
-  </div>
-</section>
-
-<section id="results" class="hidden">
-  <div class="card">
-    <div class="eyebrow">ASSESSMENT COMPLETE</div>
-    <h2>Your result</h2>
-    <div class="result" id="finalScore">0 / 3</div>
-    <p id="resultMessage"></p>
-    <hr>
-    <h3>Review your performance</h3>
-    <div id="review"></div>
-    <div class="actions"><button class="primary" onclick="startQuiz()">Try again</button><button class="secondary" onclick="goHome()">Home</button></div>
-  </div>
-</section>
-<footer>OFFENCE IQ • Early prototype<br>Training illustration only. Not legal advice or operational direction. Verify current legislation, case law and applicable agency policy. Content requires qualified legal and operational review before real-world use.</footer>
-</div>
+:root{--bg:#0b1421;--navy:#101b2b;--panel:#18283d;--line:#30445d;--ink:#f4f7fb;--muted:#a9b8c9;--gold:#e7b85b;--green:#75d2a2;--red:#ff8e8e;--blue:#8bbcff}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}.shell{max-width:1050px;margin:auto;padding:18px}.top{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);padding:8px 0 16px;gap:12px}.brand{display:flex;gap:12px;align-items:center}.mark{width:42px;height:42px;border:2px solid var(--gold);border-radius:12px;display:grid;place-items:center;color:var(--gold);font-weight:900}.brand strong{display:block;letter-spacing:1.4px}.muted,.small,.brand small{color:var(--muted)}.small{font-size:12px}.status,.pill{font-size:11px;color:var(--gold);border:1px solid #78623b;border-radius:20px;padding:4px 9px}.hero{padding:26px 0 16px}.eyebrow{color:var(--gold);font-size:12px;font-weight:800;letter-spacing:1.7px;text-transform:uppercase}.hero h1{font-size:clamp(28px,5vw,42px);line-height:1.12;margin:8px 0}.hero p{max-width:700px;color:var(--muted)}.stats,.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:16px 0}.grid{grid-template-columns:repeat(2,1fr)}.stat,.panel,.tile{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:15px}.stat b{font-size:23px;display:block}.stat span{font-size:12px;color:var(--muted)}.tabs{display:flex;gap:8px;overflow:auto;padding:4px 0 14px}.tab,.btn{border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:10px;padding:10px 13px;white-space:nowrap;cursor:pointer;font:inherit}.tab.active,.btn.primary{background:var(--gold);border-color:var(--gold);color:#1b2028;font-weight:800}.btn:disabled{opacity:.45}.tile{text-align:left;color:var(--ink);width:100%;cursor:pointer}.tile h3{margin:4px 0}.tile p{margin:0;color:var(--muted);font-size:14px}.symbol{font-size:24px}.panel{margin:8px 0 16px;padding:19px}.panel h2,.panel h3{margin-top:0}.row{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}.law{background:#0b1421;border-left:3px solid var(--gold);padding:14px;border-radius:8px;white-space:pre-wrap;font:15px/1.55 Georgia,serif;overflow-wrap:anywhere}.source{display:flex;gap:12px;flex-wrap:wrap;margin:14px 0}.source a{color:var(--blue);text-decoration:none}.search{width:100%;background:#0b1421;color:var(--ink);border:1px solid var(--line);border-radius:9px;padding:12px;margin:10px 0}.flash{min-height:180px;display:grid;place-items:center;text-align:center;padding:18px}.flash h2{font-size:23px}.answer{display:block;width:100%;text-align:left;margin:8px 0;padding:12px;border:1px solid var(--line);background:#0b1421;color:var(--ink);border-radius:9px;cursor:pointer}.answer.selected{border-color:var(--gold)}.answer.correct{border-color:var(--green);background:#163528}.answer.wrong{border-color:var(--red);background:#3b2027}.feedback{padding:12px;border-radius:9px;background:#0b1421;margin-top:12px}.bar{height:8px;background:#33465e;border-radius:20px;overflow:hidden}.bar i{height:100%;display:block;background:var(--green)}footer{border-top:1px solid var(--line);margin-top:30px;padding:16px 0;color:var(--muted);font-size:12px}.hide{display:none!important}@media(max-width:620px){.shell{padding:13px}.grid{grid-template-columns:1fr}.stats{gap:7px}.stat{padding:10px}.stat b{font-size:20px}}
+</style></head><body><div class="shell">
+<header class="top"><div class="brand"><div class="mark">OQ</div><div><strong>OFFENCE IQ</strong><small>South Australian legislation trainer</small></div></div><span class="status">BUILD 1.0</span></header>
+<section class="hero"><div class="eyebrow">Know the law. Recall the law.</div><h1>Build legislative confidence.</h1><p>A focused study tool for South Australian legislation. Learn statutory wording, understand provisions, test recall and track progress.</p></section>
+<div class="stats"><div class="stat"><b id="done">0</b><span>Questions answered</span></div><div class="stat"><b id="accuracy">—</b><span>Correct answers</span></div><div class="stat"><b id="mastery">0/5</b><span>Flashcards mastered</span></div></div>
+<nav class="tabs"><button class="tab active" data-page="home">Home</button><button class="tab" data-page="library">Legislation library</button><button class="tab" data-page="cards">Flashcards</button><button class="tab" data-page="quiz">Knowledge test</button><button class="tab" data-page="progress">Progress</button></nav><main id="app"></main>
+<footer><b>Important:</b> Offence IQ is an independent educational aid, not an SAPOL product, legal advice, operational direction or substitute for current legislation, policy, approved training or supervisor/legal advice. Always check the current authorised legislation and applicable procedures before relying on a provision.<div class="source"><a href="https://www.legislation.sa.gov.au/lz?path=%2FC%2FA%2Fcriminal-law-consolidation-act-1935" target="_blank" rel="noopener">Official SA legislation</a><a href="https://www.austlii.edu.au/" target="_blank" rel="noopener">AustLII</a><a href="https://lawhandbook.sa.gov.au/ch12s06s01s01.php" target="_blank" rel="noopener">SA Law Handbook (secondary explanation)</a></div><p>Section 20 checked against the current authorised Criminal Law Consolidation Act 1935 (SA), version listed 1 July 2026, on 15 November 2026. Recheck for later amendments before use.</p></footer></div>
 <script>
-const questions = [
- {topic:"Public order • Initial assessment",title:"Argument in a shopping precinct",scenario:"At 10:30 pm, police attend a public shopping precinct following reports of an argument. You observe a male standing near a group. He is speaking loudly, appears frustrated and is gesturing with his hands. No threats or physical contact are reported or observed. Several members of the public are watching.",q:"What is the most appropriate initial approach?",options:["Immediately arrest the male for offensive behaviour.","Establish what occurred, identify witnesses and assess the actual words and conduct against the relevant legal elements.","Direct the male to leave because people are watching.","Issue an expiation notice based solely on the complaint."],answer:1,explain:"The available facts do not, by themselves, establish an offence. You should make enquiries, obtain the exact words and conduct, identify witnesses and assess the evidence against each element of any potentially relevant offence. Avoid treating frustration, loud speech or public attention as proof of an offence.",lesson:"A complaint is a starting point for enquiries, not proof of an offence."},
- {topic:"Evidence • Corroboration",title:"Conflicting accounts and CCTV",scenario:"A shop employee alleges a customer deliberately pushed a display stand during an argument. The customer says the stand was accidentally knocked while moving past. A camera appears to cover the area, but the footage has not yet been obtained. No one reports an injury.",q:"Which action best strengthens the assessment?",options:["Accept the employee's account because they work at the shop.","Treat the customer's explanation as correct because there is no injury.","Obtain and preserve available CCTV, take detailed accounts and assess all evidence before reaching a conclusion.","Charge immediately and rely on the CCTV being available later."],answer:2,explain:"The accounts conflict and potentially important objective evidence exists. Secure the footage promptly, obtain detailed independent accounts and consider what the footage does and does not show. A sound decision considers evidence that supports and undermines each version.",lesson:"Test competing explanations and preserve evidence before it is lost."},
- {topic:"Powers • Legal threshold",title:"Considering a statutory power",scenario:"During a conversation in a public place, a person declines to answer questions about where they have been. They remain calm, do not attempt to leave and there is no other information suggesting an offence or immediate risk.",q:"What should guide whether a statutory power is used?",options:["Use the power because the person declined to answer.","Use the power if the person seems uncooperative.","Identify the specific lawful power, its required grounds and whether the known facts satisfy each threshold before exercising it.","Use the power first and document the grounds afterwards."],answer:2,explain:"A person's refusal to answer questions does not automatically create a power. Identify the precise statutory authority and its prerequisites, then assess whether the facts known at the time meet that threshold. If they do not, do not use the power.",lesson:"Start with the source of power and prove each prerequisite from the facts."}
-];
-let index=0,selected=null,score=0,answered=false,results=[];
-function show(id){["home","quiz","results"].forEach(x=>document.getElementById(x).classList.toggle("hidden",x!==id))}
-function stats(){document.getElementById("completedStat").textContent=localStorage.getItem("oiq_completed")||"0";let b=localStorage.getItem("oiq_best");document.getElementById("bestStat").textContent=b===null?"—":b+"/3"}
-function startQuiz(){index=0;score=0;selected=null;answered=false;results=[];show("quiz");renderQuestion()}
-function renderQuestion(){
- const q=questions[index];selected=null;answered=false;
- document.getElementById("questionCount").textContent=`Question ${index+1} of ${questions.length}`;
- document.getElementById("scoreLive").textContent=`Score: ${score}`;
- document.getElementById("progressBar").style.width=`${index/questions.length*100}%`;
- document.getElementById("topic").textContent=q.topic;
- document.getElementById("scenarioTitle").textContent=q.title;
- document.getElementById("scenarioText").textContent=q.scenario;
- document.getElementById("questionText").textContent=q.q;
- document.getElementById("feedback").className="feedback hidden";
- document.getElementById("feedback").textContent="";
- document.getElementById("submitBtn").classList.remove("hidden");
- document.getElementById("submitBtn").disabled=true;
- document.getElementById("nextBtn").classList.add("hidden");
- const box=document.getElementById("options");box.innerHTML="";
- q.options.forEach((o,i)=>{let b=document.createElement("button");b.className="option";b.innerHTML=`<span class="letter">${String.fromCharCode(65+i)}</span><span>${o}</span>`;b.onclick=()=>choose(i);box.appendChild(b)});
-}
-function choose(i){if(answered)return;selected=i;document.querySelectorAll(".option").forEach((b,n)=>b.classList.toggle("selected",n===i));document.getElementById("submitBtn").disabled=false}
-function submitAnswer(){
- if(selected===null||answered)return;answered=true;const q=questions[index],correct=selected===q.answer;if(correct)score++;
- results.push({correct,selected,answer:q.answer,title:q.title,lesson:q.lesson});
- document.querySelectorAll(".option").forEach((b,n)=>{b.disabled=true;if(n===q.answer)b.classList.add("correct");else if(n===selected)b.classList.add("wrong")});
- const f=document.getElementById("feedback");f.className="feedback "+(correct?"good":"bad");f.innerHTML=`<strong>${correct?"Correct":"Not quite"}</strong><p>${q.explain}</p><p><strong>Key takeaway:</strong> ${q.lesson}</p>`;
- document.getElementById("submitBtn").classList.add("hidden");document.getElementById("nextBtn").classList.remove("hidden");document.getElementById("nextBtn").textContent=index===questions.length-1?"View results":"Next question";document.getElementById("scoreLive").textContent=`Score: ${score}`;
-}
-function nextQuestion(){if(index<questions.length-1){index++;renderQuestion()}else finish()}
-function finish(){
- let completed=Number(localStorage.getItem("oiq_completed")||0)+questions.length;localStorage.setItem("oiq_completed",completed);
- let best=Number(localStorage.getItem("oiq_best")||0);if(score>best)localStorage.setItem("oiq_best",score);
- document.getElementById("progressBar").style.width="100%";document.getElementById("finalScore").textContent=`${score} / ${questions.length}`;
- document.getElementById("resultMessage").textContent=score===3?"Excellent result. Keep testing your reasoning against the facts and legal elements.":score===2?"Good effort. Review the explanation for the question you missed.":"Use the feedback to revisit the decision-making principles, then try again.";
- document.getElementById("review").innerHTML=results.map((r,i)=>`<div style="padding:10px 0;border-bottom:1px solid var(--line)"><strong>${i+1}. ${r.title}</strong><div class="small">${r.correct?"Correct":"Review needed"} • ${r.lesson}</div></div>`).join("");
- stats();show("results")
-}
-function exitQuiz(){if(confirm("Exit this assessment? Your current attempt will not be saved."))goHome()}
-function goHome(){show("home");stats()}
-stats();
-</script>
-</body>
-</html>
+const statute={title:"Criminal Law Consolidation Act 1935 (SA)",section:"20",heading:"Assault",url:"https://www.legislation.sa.gov.au/lz?path=%2FC%2FA%2Fcriminal-law-consolidation-act-1935",text:"20—Assault\n\n(1) A person commits an assault if the person, without the consent of another person (the victim)—\n(a) intentionally applies force (directly or indirectly) to the victim; or\n(b) intentionally makes physical contact (directly or indirectly) with the victim, knowing that the victim might reasonably object to the contact in the circumstances (whether or not the victim was at the time aware of the contact); or\n(c) threatens (by words or conduct) to apply force (directly or indirectly) to the victim and there are reasonable grounds for the victim to believe that—\n(i) the person who makes the threat is in a position to carry out the threat and intends to do so; or\n(ii) there is a real possibility that the person will carry out the threat; or\n(d) does an act of which the intended purpose is to apply force (directly or indirectly) to the victim; or\n(e) accosts or impedes another in a threatening manner.\n\n(2) However—\n(a) conduct that lies within limits of what would be generally accepted in the community as normal incidents of social interaction or community life cannot amount to an assault; and\n(b) conduct that is justified or excused by law cannot amount to an assault.\n\n(3) A person who commits an assault is guilty of an offence. Maximum penalty: basic offence—2 years imprisonment; aggravated offence—3 years; aggravated by use or threatened use of an offensive weapon—4 years; aggravated in circumstances referred to in section 5AA(1)(c), (ca) or (ka)—5 years.\n\n(4) A person who commits an assault that causes harm to another is guilty of an offence. Maximum penalty: basic offence—3 years imprisonment; aggravated offence—4 years; aggravated by use or threatened use of an offensive weapon—5 years; aggravated in circumstances referred to in section 5AA(1)(c), (ca) or (ka)—7 years."};
+const cards=[["What is the opening condition in s 20(1)?","The person acts without the consent of another person (the victim)."],["What must be established for s 20(1)(a)?","The person intentionally applies force, directly or indirectly, to the victim."],["What additional knowledge is specified in s 20(1)(b)?","The person knows the victim might reasonably object to the contact in the circumstances. The victim need not be aware of the contact at the time."],["What are the two alternative belief grounds in s 20(1)(c)?","Reasonable grounds for the victim to believe the person is in a position to carry out the threat and intends to do so; or there is a real possibility the person will carry it out."],["What two qualifications appear in s 20(2)?","Generally accepted normal social interaction or community life cannot amount to assault; nor can conduct justified or excused by law."]];
+const questions=[["Which phrase appears in the opening words of s 20(1)?",["Without the consent of another person","Without lawful authority","With intent to cause harm","In a public place"],0,"Section 20(1) begins by requiring conduct without the consent of another person (the victim)."],["Under s 20(1)(a), force may be applied:",["Only directly","Directly or indirectly","Only where injury results","Only in a public place"],1,"The provision expressly says directly or indirectly."],["For s 20(1)(b), the accused must know that:",["The victim is injured","The victim might reasonably object to the contact in the circumstances","A witness saw the contact","The victim made a complaint"],1,"That is the knowledge requirement. The victim need not be aware of the contact at the time."],["Which statement accurately reflects s 20(1)(c)?",["A threat always amounts to assault","A threat must be written","There must be reasonable grounds for the victim to believe one of the statutory alternatives","Physical contact must occur"],2,"The section requires reasonable grounds for the victim to believe either the person can carry out the threat and intends to, or there is a real possibility they will."],["Which conduct is expressly included in s 20(1)(e)?",["Any argument","Accosting or impeding another in a threatening manner","Refusing to answer questions","Being present at a scene"],1,"Section 20(1)(e) expressly includes accosting or impeding another in a threatening manner."],["Which subsection addresses normal social interaction and conduct justified or excused by law?",["s 20(1)","s 20(2)","s 20(3)","s 20(4)"],1,"Those qualifications are in s 20(2)(a) and (b)."],["What is the maximum penalty for a basic offence under s 20(3)?",["12 months","2 years","3 years","5 years"],1,"Section 20(3): basic offence—imprisonment for 2 years."],["What additional outcome distinguishes s 20(4) from s 20(3)?",["The conduct occurs at night","The victim is a police officer","The assault causes harm to another","A weapon is present"],2,"Section 20(4) applies where the assault causes harm to another."]];
+let progress=JSON.parse(localStorage.getItem("oq-v1")||'{"done":0,"correct":0,"mastered":[]}'),page="home",ci=0,reveal=false,qs=[],qi=0,pick=null,marked=false,score=0;
+const app=document.getElementById("app");function save(){localStorage.setItem("oq-v1",JSON.stringify(progress));stats()}function stats(){done.textContent=progress.done;accuracy.textContent=progress.done?Math.round(progress.correct/progress.done*100)+"%":"—";mastery.textContent=progress.mastered.length+"/5"}function go(p){page=p;document.querySelectorAll(".tab").forEach(b=>b.classList.toggle("active",b.dataset.page===p));render()}document.querySelectorAll(".tab").forEach(b=>b.onclick=()=>go(b.dataset.page));
+function render(){({home,library,cards:flashcards,quiz,progressView})[page]?.()}
+function home(){app.innerHTML='<div class="grid"><button class="tile" onclick="go(\'library\')"><div class="symbol">§</div><h3>Legislation library</h3><p>Read the current study module and statutory wording.</p></button><button class="tile" onclick="go(\'cards\')"><div class="symbol">▤</div><h3>Flashcards</h3><p>Recall key requirements and statutory distinctions.</p></button><button class="tile" onclick="startQuiz()"><div class="symbol">✓</div><h3>Knowledge test</h3><p>Check understanding with objective questions.</p></button><button class="tile" onclick="go(\'progress\')"><div class="symbol">↗</div><h3>Your progress</h3><p>Review answers, accuracy and mastered cards.</p></button></div><section class="panel"><span class="pill">FIRST MODULE</span><h2>Assault · s 20</h2><p class="muted">Criminal Law Consolidation Act 1935 (SA)</p><button class="btn primary" onclick="go(\'library\')">Open module</button></section>'}
+function library(){app.innerHTML='<section class="panel"><div class="row"><div><span class="pill">PART 3 · DIVISION 7</span><h2>s 20 — Assault</h2><div class="small">'+statute.title+'</div></div><span class="small">Checked 15 Nov 2026</span></div><p><b>Study focus</b></p><p class="muted">Read statutory elements and qualifications as written. The study points below do not replace the Act.</p><div class="law">'+statute.text+'</div><h3 style="margin-top:20px">Key points to recall</h3><ul><li>Section 20(1) sets out five alternative forms of conduct, subject to the opening words.</li><li>Section 20(2) states two qualifications: normal social interaction/community life, and conduct justified or excused by law.</li><li>Section 20(3) concerns assault; s 20(4) concerns assault causing harm.</li><li>Aggravated maximum penalties depend on statutory aggravating circumstances. Check ss 5AA and 20 and applicable regulations.</li></ul><div class="source"><a href="'+statute.url+'" target="_blank" rel="noopener">Open current authorised Act ↗</a><a href="https://www.austlii.edu.au/" target="_blank" rel="noopener">Open AustLII ↗</a></div><p class="small">Current authorised version listed 1 July 2026; checked against official SA legislation on 15 November 2026. Verify again before operational reliance.</p></section><section class="panel"><h3>Find within this module</h3><input class="search" id="term" placeholder="Search e.g. consent, threat, harm"><div class="small" id="found">Search the statutory wording and study notes.</div></section>';term.oninput=()=>{let q=term.value.toLowerCase().trim();found.textContent=!q?"Search the statutory wording and study notes.":(statute.text+" normal social interaction justified excused by law").toLowerCase().includes(q)?"Term appears in this module. Read the full provision above for context.":"No match found in this module."}}
+function flashcards(){let c=cards[ci];app.innerHTML='<section class="panel"><div class="row"><div><span class="pill">FLASHCARDS</span><h2>Section 20 recall</h2></div><span class="small">Card '+(ci+1)+' of 5</span></div><div class="bar"><i style="width:'+((ci+1)/5*100)+'%"></i></div><div class="flash"><div><div class="eyebrow">'+(reveal?"ANSWER":"QUESTION")+'</div><h2>'+(reveal?c[1]:c[0])+'</h2></div></div><div class="row"><button class="btn" onclick="moveCard(-1)" '+(!ci?"disabled":"")+' >Previous</button><button class="btn primary" onclick="reveal=!reveal;flashcards()">'+(reveal?"Show question":"Reveal answer")+'</button><button class="btn" onclick="moveCard(1)" '+(ci===4?"disabled":"")+' >Next</button></div><div class="row" style="margin-top:18px"><span class="small">'+(progress.mastered.includes(ci)?"Marked mastered":"Not yet marked mastered")+'</span><button class="btn" onclick="masterCard()">'+(progress.mastered.includes(ci)?"Unmark":"Mark mastered")+'</button></div></section>'}
+function moveCard(n){ci=Math.max(0,Math.min(4,ci+n));reveal=false;flashcards()}function masterCard(){progress.mastered=progress.mastered.includes(ci)?progress.mastered.filter(x=>x!==ci):[...progress.mastered,ci];save();flashcards()}
+function startQuiz(){qs=[...questions].sort(()=>Math.random()-.5).slice(0,5);qi=0;pick=null;marked=false;score=0;go("quiz")}
+function quiz(){if(!qs.length){app.innerHTML='<section class="panel"><h2>Knowledge test</h2><button class="btn primary" onclick="startQuiz()">Start 5-question test</button></section>';return}if(qi===qs.length){app.innerHTML='<section class="panel"><span class="pill">TEST COMPLETE</span><h2>Your result: '+score+'/'+qs.length+'</h2><div class="bar"><i style="width:'+score/qs.length*100+'%"></i></div><p class="muted">Your answers have been added to overall progress.</p><button class="btn primary" onclick="startQuiz()">Try another test</button></section>';return}let q=qs[qi];app.innerHTML='<section class="panel"><div class="row"><span class="pill">KNOWLEDGE TEST</span><span class="small">Question '+(qi+1)+' of '+qs.length+'</span></div><div class="bar"><i style="width:'+qi/qs.length*100+'%"></i></div><h2 style="margin-top:20px">'+q[0]+'</h2>'+q[1].map((v,i)=>'<button class="answer '+(marked&&i===q[2]?"correct":marked&&i===pick?"wrong":pick===i?"selected":"")+'" '+(marked?"disabled":"")+' onclick="pickAnswer('+i+')">'+String.fromCharCode(65+i)+'. '+v+'</button>').join("")+(marked?'<div class="feedback"><b>'+(pick===q[2]?"Correct.":"Not quite.")+'</b><p>'+q[3]+'</p></div><button class="btn primary" style="margin-top:14px" onclick="nextQ()">'+(qi===qs.length-1?"See result":"Next question")+'</button>':'<button class="btn primary" style="margin-top:12px" onclick="markAnswer()" '+(pick===null?"disabled":"")+' >Check answer</button>')+'</section>'}
+function pickAnswer(i){if(marked)return;pick=i;quiz()}function markAnswer(){if(pick===null||marked)return;marked=true;progress.done++;if(pick===qs[qi][2]){progress.correct++;score++}save();quiz()}function nextQ(){qi++;pick=null;marked=false;quiz()}
+function progressView(){let pct=progress.done?Math.round(progress.correct/progress.done*100):0;app.innerHTML='<section class="panel"><span class="pill">YOUR LEARNING</span><h2>Progress overview</h2><div class="grid"><div class="stat"><b>'+progress.done+'</b><span>Questions answered</span></div><div class="stat"><b>'+pct+'%</b><span>Overall accuracy</span></div><div class="stat"><b>'+progress.mastered.length+'/5</b><span>Cards mastered</span></div><div class="stat"><b>'+(5-progress.mastered.length)+'</b><span>Cards remaining</span></div></div><h3>Flashcard mastery</h3><div class="bar"><i style="width:'+progress.mastered.length/5*100+'%"></i></div><p class="small">Progress is stored in this browser on this device only. It does not sync between devices.</p><button class="btn" onclick="if(confirm(\'Reset all locally stored progress?\')){progress={done:0,correct:0,mastered:[]};save();progressView()}">Reset progress</button></section>'}
+stats();render();if("serviceWorker"in navigator&&location.protocol!=="file:")addEventListener("load",()=>navigator.serviceWorker.register("./sw.js").catch(()=>{}));
+</script></body></html>
