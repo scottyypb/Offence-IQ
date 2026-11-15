@@ -3,7 +3,7 @@ const path = require('node:path');
 
 (async () => {
   const browser = await chromium.launch({ headless: true });
-  const page = await browser.newPage();
+  const page = await browser.newPage({ viewport: { width: 390, height: 844 } });
   const errors = [];
   page.on('pageerror', error => errors.push(error.message));
 
@@ -11,14 +11,39 @@ const path = require('node:path');
     await page.goto('file://' + path.resolve('index.html'));
     await page.getByText('AVAILABLE MODULES · 3').waitFor();
 
-    await page.getByRole('button', { name: /Careless driving · s 45/ }).click();
-    await page.getByText('Road Traffic Act 1961 (SA)').waitFor();
+    const modules = [
+      { button: /Assault · s 20/, act: 'Criminal Law Consolidation Act 1935 (SA)', term: 'intentionally applies force' },
+      { button: /Disorderly\/offensive conduct · s 7/, act: 'Summary Offences Act 1953 (SA)', term: 'public place' },
+      { button: /Careless driving · s 45/, act: 'Road Traffic Act 1961 (SA)', term: 'reasonable consideration' }
+    ];
 
-    await page.locator('#term').fill('reasonable consideration');
-    await page.getByText(/match.*highlighted in the statutory wording/i).waitFor();
+    for (const module of modules) {
+      await page.getByRole('button', { name: module.button }).click();
+      await page.getByText(module.act).waitFor();
+      await page.locator('#term').fill(module.term);
+      await page.getByText(/match.*highlighted in the statutory wording/i).waitFor();
+      const result = page.locator('#found button[data-target]').first();
+      await result.waitFor();
+      await result.click();
+    }
+
+    await page.getByRole('button', { name: 'Flashcards' }).click();
+    await page.getByRole('button', { name: /Reveal answer/ }).click();
+    await page.getByRole('button', { name: 'Mark mastered' }).click();
+    await page.getByText(/Marked mastered/).waitFor();
+
+    await page.getByRole('button', { name: 'Knowledge test' }).click();
+    await page.getByRole('button', { name: /Start 5-question test/ }).click();
+    await page.locator('.answer').first().click();
+    await page.getByRole('button', { name: 'Check answer' }).click();
+    await page.locator('.feedback').waitFor();
+
+    await page.getByRole('button', { name: 'Progress' }).click();
+    await page.getByText('Progress overview').waitFor();
+    await page.getByText('1', { exact: true }).first().waitFor();
 
     if (errors.length) throw new Error('Browser JavaScript errors: ' + errors.join(' | '));
-    console.log('PASS: app renders, Road Traffic module opens, and statutory search returns results.');
+    console.log('PASS: mobile layout renders; all three modules open; search returns and jumps to matches; flashcard mastery saves; quiz answers; progress updates; no uncaught JavaScript errors.');
   } finally {
     await browser.close();
   }
