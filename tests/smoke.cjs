@@ -9,12 +9,13 @@ const path = require('node:path');
 
   try {
     await page.goto('file://' + path.resolve('index.html'));
-    await page.getByText('AVAILABLE MODULES · 3').waitFor();
+    await page.getByText('AVAILABLE MODULES · 4').waitFor();
 
     const modules = [
       { button: /Assault · s 20/, act: 'Criminal Law Consolidation Act 1935 (SA)', term: 'intentionally applies force' },
       { button: /Disorderly\/offensive conduct · s 7/, act: 'Summary Offences Act 1953 (SA)', term: 'public place' },
-      { button: /Careless driving · s 45/, act: 'Road Traffic Act 1961 (SA)', term: 'reasonable consideration' }
+      { button: /Careless driving · s 45/, act: 'Road Traffic Act 1961 (SA)', term: 'reasonable consideration' },
+      { button: /Driving under the influence · s 47/, act: 'Road Traffic Act 1961 (SA)', term: 'incapable of exercising effective control' }
     ];
 
     for (const module of modules) {
