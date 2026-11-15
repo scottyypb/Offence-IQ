@@ -1,0 +1,9 @@
+{
+  "name": "Offence IQ — SA Legislation Trainer",
+  "short_name": "Offence IQ",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#0b1421",
+  "theme_color": "#101b2b",
+  "description": "South Australian police legislation learning tool."
+}
