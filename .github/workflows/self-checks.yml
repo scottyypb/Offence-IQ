@@ -53,3 +53,5 @@ jobs:
         run: npx playwright install --with-deps chromium
       - name: Test real browser interactions
         run: node tests/smoke.cjs
+      - name: Verify deployed live website
+        run: node tests/live-check.cjs
