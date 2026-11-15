@@ -19,7 +19,7 @@ const path = require('node:path');
 
     for (const module of modules) {
       await page.getByRole('button', { name: module.button }).click();
-      await page.getByText(module.act).waitFor();
+      await page.getByText(module.act, { exact: true }).first().waitFor();
       await page.locator('#term').fill(module.term);
       await page.getByText(/match.*highlighted in the statutory wording/i).waitFor();
       const result = page.locator('#found button[data-target]').first();
