@@ -9,13 +9,14 @@ const path = require('node:path');
 
   try {
     await page.goto('file://' + path.resolve('index.html'));
-    await page.getByText('AVAILABLE MODULES · 4').waitFor();
+    await page.getByText('AVAILABLE MODULES · 5').waitFor();
 
     const modules = [
       { button: /Assault · s 20/, act: 'Criminal Law Consolidation Act 1935 (SA)', term: 'intentionally applies force' },
       { button: /Disorderly\/offensive conduct · s 7/, act: 'Summary Offences Act 1953 (SA)', term: 'public place' },
       { button: /Careless driving · s 45/, act: 'Road Traffic Act 1961 (SA)', term: 'reasonable consideration' },
-      { button: /Driving under the influence · s 47/, act: 'Road Traffic Act 1961 (SA)', term: 'incapable of exercising effective control' }
+      { button: /Driving under the influence · s 47/, act: 'Road Traffic Act 1961 (SA)', term: 'incapable of exercising effective control' },
+      { button: /Prescribed concentration of alcohol · s 47B/, act: 'Road Traffic Act 1961 (SA)', term: 'category 1 offence' }
     ];
 
     for (const module of modules) {
@@ -44,7 +45,7 @@ const path = require('node:path');
     await page.getByText('1', { exact: true }).first().waitFor();
 
     if (errors.length) throw new Error('Browser JavaScript errors: ' + errors.join(' | '));
-    console.log('PASS: mobile layout renders; all three modules open; search returns and jumps to matches; flashcard mastery saves; quiz answers; progress updates; no uncaught JavaScript errors.');
+    console.log('PASS: mobile layout renders; all five modules open; search returns and jumps to matches; flashcard mastery saves; quiz answers; progress updates; no uncaught JavaScript errors.');
   } finally {
     await browser.close();
   }
