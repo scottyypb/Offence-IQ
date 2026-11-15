@@ -30,7 +30,7 @@ jobs:
 
           const required = [
             'const assaultData=', 'const disorderData=', 'const trafficData=',
-            'function selectModule(', 'function render(', 'function search',
+            'function selectModule(', 'function render(', 'searchField.oninput=',
             'function flashcards(', 'function quiz(', 'function progressView(',
             "selectModule(\\'traffic\\')"
           ];
